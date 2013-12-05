@@ -22,8 +22,12 @@ public class Article extends Model {
     public Long id;
     @Column(name="name")
     public String name;
-
+    
+    @Column(name="url")
     public String url;
+    
+    @ManyToMany
+    public List<Keyword> keywords;
 
     public Article(String name, String url){
         this.url=url;
@@ -54,6 +58,18 @@ public class Article extends Model {
     
     public static void modify(Article a, String name, String url){
     	a.modify(name, url);
+    }
+    
+    public List<Keyword> getKeywords(){
+    	return this.keywords;
+    }
+    
+    public void addKeyword(Keyword key){
+    	this.keywords.add(key);
+    }
+    
+    public void removeKeyword(Keyword key){
+    	this.keywords.remove(key);
     }
     
 }
