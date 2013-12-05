@@ -1,6 +1,7 @@
 # --- !Ups
 
 CREATE SEQUENCE rank_id_seq;
+<<<<<<< HEAD
 
 CREATE TABLE users (
 
@@ -23,6 +24,20 @@ create table Comment (
   constraint pk_Comment primary key (id))
 ;
 
+=======
+
+CREATE TABLE users (
+    email VARCHAR (100) PRIMARY KEY ,
+    name VARCHAR (255),
+    password VARCHAR (255)
+);
+
+CREATE TABLE article (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT, --change in default nextval('rank_id_seq'),
+  name varchar(100),
+  url varchar(200)
+) ;
+>>>>>>> c7ce1ac06b6360270aa0a606d2e00bba17038686
 
 INSERT into article (name,url) values
 ('tablette','tablette.jpg'),
@@ -43,6 +58,9 @@ DELETE from article where name= 'guitare';
 DELETE from article where name= 'retroprojecteur';
 DROP TABLE users;
 DROP TABLE article;
+<<<<<<< HEAD
 DROP TABLE comment;
+=======
+>>>>>>> c7ce1ac06b6360270aa0a606d2e00bba17038686
 DROP SEQUENCE rank_id_seq;
 
