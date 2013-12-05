@@ -27,8 +27,8 @@ public class Keyword extends Model{
 	@GeneratedValue
 	public Long id;
 	
-	@Column(name="key")
-	public String key;
+	@Column(name="name")
+	public String name;
 	
 	@ManyToMany(mappedBy="keywords")
 	@JoinTable(name="article_keyword")
@@ -39,7 +39,7 @@ public class Keyword extends Model{
 	}
 	
 	public Keyword(String key){
-		this.key = key;
+		this.name = key;
 	}
 	
 	public void addArticle(Article a){
