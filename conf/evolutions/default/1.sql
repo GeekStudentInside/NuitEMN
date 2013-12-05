@@ -16,6 +16,14 @@ CREATE TABLE article (
   url varchar(200)
 ) ;
 
+create table Comment (
+  id                         bigint not null,
+  comment                     varchar(255),
+  author                      varchar(100),
+  constraint pk_Comment primary key (id))
+;
+
+
 INSERT into article (name,url) values
 ('tablette','tablette.jpg'),
 ('ordinateur','ordi.jpg'),
@@ -35,5 +43,6 @@ DELETE from article where name= 'guitare';
 DELETE from article where name= 'retroprojecteur';
 DROP TABLE users;
 DROP TABLE article;
+DROP TABLE comment;
 DROP SEQUENCE rank_id_seq;
 
