@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.Constraint;
 
 import play.db.ebean.Model;
 
@@ -28,7 +29,7 @@ public class Keyword extends Model{
 	@Column(name="key")
 	public String key;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "keywords")
 	public List<Article> articles;
 	
 	public Keyword(String key){
@@ -48,5 +49,9 @@ public class Keyword extends Model{
 	public List<Article> getArticles(){
 		return this.articles;
 	}
+	
+	public void setArticles(List<Article> articles){
+    	this.articles = articles;
+    }
 
 }

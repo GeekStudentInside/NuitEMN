@@ -26,7 +26,7 @@ public class Article extends Model {
     @Column(name="url")
     public String url;
     
-    @ManyToMany
+    @ManyToMany(mappedBy = "articles")
     public List<Keyword> keywords;
 
     public Article(String name, String url){
@@ -62,6 +62,10 @@ public class Article extends Model {
     
     public List<Keyword> getKeywords(){
     	return this.keywords;
+    }
+    
+    public void setKeywords(List<Keyword> keys){
+    	this.keywords = keys;
     }
     
     public void addKeyword(Keyword key){
