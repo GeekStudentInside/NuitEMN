@@ -13,9 +13,9 @@ import java.util.List;
 public class Application extends Controller {
 
     public static Result index() {
-        List<Article> articles= Article.nbArticles(5);
-        return ok(index.render("NuitInfo"));
+        return ok(index.render("Your new application is ready."));
     }
+    
     public static Result getArticle(){
         return ok(Json.toJson(Article.nbArticles(5)));
     }
@@ -37,7 +37,6 @@ public class Application extends Controller {
         // TODO doit pouvoir se faire avec un join dans 1 seule requete
         links.addAll(linksReverse);
 
-
         if(!links.isEmpty() && links.size() ==1){
             links.get(0).weight = weight;
             return ok("done");
@@ -45,4 +44,5 @@ public class Application extends Controller {
         else return badRequest("Empty or more that 1 link, FIX IT !!");
 
     }
+
 }

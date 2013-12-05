@@ -3,16 +3,26 @@
 CREATE SEQUENCE rank_id_seq;
 
 CREATE TABLE users (
+
     email VARCHAR (100) PRIMARY KEY ,
     name VARCHAR (255),
-    password VARCHAR (255)
+    password VARCHAR (255),
+    isadmin BOOLEAN
 );
 
 CREATE TABLE article (
-  id INTEGER PRIMARY KEY AUTO_INCREMENT, --change in default nextval('rank_id_seq'),
+  id INTEGER PRIMARY KEY default nextval('rank_id_seq'),
   name varchar(100),
   url varchar(200)
 ) ;
+
+create table Comment (
+  id                         bigint not null,
+  comment                     varchar(255),
+  author                      varchar(100),
+  constraint pk_Comment primary key (id))
+;
+
 
 INSERT into article (name,url) values
 ('tablette','tablette.jpg'),
@@ -21,17 +31,28 @@ INSERT into article (name,url) values
 ('guitare','guitare.jpg') ,
 ('retroprojecteur','retropro.jpg');
 
-INSERT INTO  users (email, name, password) values ('blondeau.gui@gmail.com', 'Guillaume Blondeau', 'test');
+INSERT INTO  users (email, name, password, isAdmin) values ('blondeau.gui@gmail.com', 'Guillaume Blondeau', 'test', true);
+
+CREATE SEQUENCE rank_id_seq2;
+
+CREATE TABLE Link (
+
+    id INTEGER PRIMARY KEY default nextval('rank_id_seq2'),
+    Article1 INTEGER,
+    Article2 INTEGER,
+    Weight FLOAT
+);
+
+INSERT INTO Link (Article1, Article2, Weight) values
+((SELECT id FROM Article where name ='tablette'), (SELECT id FROM Article where name ='ordinateur'), 0.5),
+((SELECT id FROM Article where name ='tablette'), (SELECT id FROM Article where name ='table'), 0.8),
+((SELECT id FROM Article where name ='table'), (SELECT id FROM Article where name ='guitare'), 0.1);
 
 # --- !Downs
 
-DELETE FROM users where email = 'blondeau.gui@gmail.com';
-DELETE from article where name= 'tablette';
-DELETE from article where name= 'ordinateur';
-DELETE from article where name= 'table';
-DELETE from article where name= 'guitare';
-DELETE from article where name= 'retroprojecteur';
 DROP TABLE users;
 DROP TABLE article;
+DROP TABLE comment;
 DROP SEQUENCE rank_id_seq;
+DROP TABLE Link;
 

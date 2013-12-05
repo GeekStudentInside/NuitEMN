@@ -1,26 +1,17 @@
 @(message: String)
 
-@main("Welcome to Play") {
+@main("My Site") {
 
-    <nav class="top-bar" data-topbar>
-        <ul class="title-area">
-            <li class="name">
-                <h1><a href="#">My site</a></h1>
-            </li>
-        </ul>
+    <div class="history">
 
-        <section class="top-bar-section">
-        @if(session.isEmpty){
-            <ul class="right">
-                <li><a href="@routes.Login.login">Login</a></li>
-            </ul>
-        } else {
-            <ul class="right">
-                <li><a href = "#">@session.get("name")</a></li>
-                <li><a href="@routes.Login.logout">Logout</a></li>
-            </ul>
-        }
-        </section>
-    </nav>
+        <a href="" class="Next"> Next </a>
 
+        <a href="" class="Happy">I get lucky !</a>
+
+        <a href="" class="Unhappy"> Nothings convinces me </a>
+
+    </div>
+
+    <script type="text/javascript" src="@routes.Assets.at("javascripts/frontend/application.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.at("javascripts/articleDetails.js")"></script>
 }
