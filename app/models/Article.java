@@ -44,6 +44,7 @@ public class Article extends Model {
     public void modify(String name, String url){
     	this.name = name;
     	this.url = url;
+    	this.update();
     }
     
     public static void modify(Article a, String name, String url){
