@@ -13,6 +13,7 @@ import java.util.List;
  * Time: 20:14
  * To change this template use File | Settings | File Templates.
  */
+
 @Entity
 @Table(name = "Link")
 public class Link extends Model {
@@ -21,10 +22,14 @@ public class Link extends Model {
         @GeneratedValue(strategy= GenerationType.IDENTITY)
         public Long id;
 
+        @OneToOne
         @JoinColumn(name="Article1")
         public Article article1;
+
+        @OneToOne
         @JoinColumn(name="Article2")
         public Article article2;
+
         @Column(name="Weight")
         public float weight;
 
