@@ -18,7 +18,7 @@ function selectedArticle()
 {
     var article = this;
     var selected = article.classList.contains('activated');
-    if(selected)
+    if(!selected)
     {
         article.classList.add('activated');
     }
@@ -36,10 +36,12 @@ function getSelectedArticles()
     {
         var article = articles[i];
         if(article.classList.contains('activated'))
+            {
             selectedArticles.push(new Array(
                 '' + article.getElementsByClassName('article_name')[0].innerHTML + '',
                 '' + article.getElementsByClassName('article_url')[0].src + ''
             ));
+        }
     }
     return selectedArticles;
 }
@@ -47,28 +49,29 @@ function getSelectedArticles()
 function sendSelectedArticles()
 {
     var selectedArticles = getSelectedArticles();
-    $.ajax(
+    addToHistory();
+    /*$.ajax(
         {url : "selectedArticlesURL",
     data : selectedArticles}
     ).done(function (){
             addToHistory();
-        })
+        })*/
 }
 
 function addToHistory()
 {
-    var history = $(".history")[0];
-    var ulrArray = new Array();
+    var history = $(".history");
+    var urlArray = new Array();
     var selectedArticles = getSelectedArticles();
 
-    for(var i = 0 ; i < selectedArticles.lenght ; ++i)
+    for(var i = 0 ; i < selectedArticles.length ; ++i)
     {
         urlArray.push(selectedArticles[i][1]);
     }
-    for(var i = 0 ; i < urlArray.lenght ; ++i)
+    for(var i = 0 ; i < urlArray.length ; ++i)
     {
         var url = urlArray[i];
-        var img = $('<a><img src="' + url + '" class="history_img"/></a>');
+        var img = $('<a><img src="' + url + '" class="history_img" style="height : 100%"/></a>');
         history.append(img);
     }
 }
