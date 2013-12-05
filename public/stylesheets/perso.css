@@ -17,7 +17,7 @@ table.titre td {
 
 .article.activated {
     background: #d3d3d3;
-    border-color: #333;
+    border-color: limegreen;
     border-width: 3px;
 }
 
