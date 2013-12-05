@@ -8,10 +8,10 @@ CREATE TABLE user (
 
 );
 
-INSERT INTO  user (email, name, password) values ('blondeau.gui@gmail.com', 'Guillaume Blondeau', 'test')
+--INSERT INTO  user (email, name, password) values ('blondeau.gui@gmail.com', 'Guillaume Blondeau', 'test')
 
 # --- !Downs
 
 
-DELETE FROM user where email = 'blondeau.gui@gmail.com';
+--DELETE FROM user where email = 'blondeau.gui@gmail.com';
 DROP TABLE user;
