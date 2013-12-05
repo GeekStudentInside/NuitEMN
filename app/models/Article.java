@@ -22,25 +22,12 @@ public class Article extends Model {
     public Long id;
     @Column(name="name")
     public String name;
-    
-    @OneToMany
-    public List<String> urls;
 
-    public Article(String name, List<String> urls){
-        this.urls=urls;
+    public String url;
+
+    public Article(String name, String url){
+        this.url=url;
         this.name=name;
-    }
-    
-    public void addImage(String image){
-    	this.urls.add(image);
-    }
-    
-    public void deleteImage(String image){
-    	this.urls.remove(image);
-    }
-    
-    public void clearImages(){
-    	this.urls.clear();
     }
 
     public static Finder<Long,Article> find = new Finder<Long,Article>(
@@ -59,14 +46,14 @@ public class Article extends Model {
     	a.delete();
     }
     
-    public void modify(String name, List<String> urls){
+    public void modify(String name, String url){
     	this.name = name;
-    	this.urls = urls;
+    	this.url = url;
     	this.update();
     }
     
-    public static void modify(Article a, String name, List<String> urls){
-    	a.modify(name, urls);
+    public static void modify(Article a, String name, String url){
+    	a.modify(name, url);
     }
     
 }
