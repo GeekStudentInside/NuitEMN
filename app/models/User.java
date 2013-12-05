@@ -32,4 +32,16 @@ public class Users extends Model {
         return find.where().eq("email", email)
                 .eq("password", password).findUnique();
     }
+
+    public static void delete(User user) {
+        user.delete();
+    }
+
+    public static void modify(User user, String email, String name, String password){
+        user.email = email;
+        user.name = name;
+        user.password = password;
+        user.update();
+    }
+
 }
