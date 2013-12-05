@@ -1,11 +1,12 @@
 package controllers;
 
+import java.util.List;
+
 import models.Article;
 import models.Link;
 import play.*;
 import play.libs.Json;
 import play.mvc.*;
-
 import views.html.*;
 
 public class Application extends Controller {
@@ -17,8 +18,6 @@ public class Application extends Controller {
     public static Result getArticle(){
         return ok(Json.toJson(Article.nbArticles(5)));
     }
-<<<<<<< HEAD
-=======
 
     public static Result getAllLinks(){
         return ok(Json.toJson(Link.find.all()));
@@ -45,5 +44,5 @@ public class Application extends Controller {
         else return badRequest("Empty or more that 1 link, FIX IT !!");
 
     }
->>>>>>> 8279c73954ba6eff42624a8877ad2640c6c94e8e
+
 }

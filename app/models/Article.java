@@ -33,6 +33,9 @@ public class Article extends Model {
     	
     }
 
+    public List<Comment> comments;
+
+
     public Article(String name, String url){
         this.url=url;
         this.name=name;
@@ -63,6 +66,7 @@ public class Article extends Model {
     public static void modify(Article a, String name, String url){
     	a.modify(name, url);
     }
+
     
     public List<Keyword> getKeywords(){
     	return this.keywords;
@@ -80,4 +84,22 @@ public class Article extends Model {
     	this.keywords.remove(key);
     }
     
+
+
+    public void addComment(Comment com) {
+        this.comments.add(com);
+    }
+
+    public static void addComment(Article a, Comment com){
+        a.addComment(com);
+    }
+
+    public void removeComment(Comment com) {
+        this.comments.remove(com);
+    }
+
+    public static void removeComment(Article a, Comment com){
+        a.removeComment(com);
+    }
+
 }
