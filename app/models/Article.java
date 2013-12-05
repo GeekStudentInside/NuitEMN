@@ -12,17 +12,35 @@ import java.util.List;
 @Table(name = "Article")
 public class Article extends Model {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7383413412594525585L;
+	
+	@Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     public Long id;
     @Column(name="name")
     public String name;
-    @Column(name="url")
-    public String url;
+    
+    @OneToMany
+    public List<String> urls;
 
-    public Article(String name,String url){
-        this.url=url;
+    public Article(String name, List<String> urls){
+        this.urls=urls;
         this.name=name;
+    }
+    
+    public void addImage(String image){
+    	this.urls.add(image);
+    }
+    
+    public void deleteImage(String image){
+    	this.urls.remove(image);
+    }
+    
+    public void clearImages(){
+    	this.urls.clear();
     }
 
     public static Finder<Long,Article> find = new Finder<Long,Article>(
@@ -41,14 +59,14 @@ public class Article extends Model {
     	a.delete();
     }
     
-    public void modify(String name, String url){
+    public void modify(String name, List<String> urls){
     	this.name = name;
-    	this.url = url;
+    	this.urls = urls;
     	this.update();
     }
     
-    public static void modify(Article a, String name, String url){
-    	a.modify(name, url);
+    public static void modify(Article a, String name, List<String> urls){
+    	a.modify(name, urls);
     }
     
 }
