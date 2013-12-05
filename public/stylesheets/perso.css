@@ -62,3 +62,11 @@ table tr:nth-of-type(even) {
     max-width: 100%;
     max-height:512px;
 }
+
+.next{
+    background-color : #272722;
+}
+
+.happy{
+    background-color : #272722;
+}
