@@ -20,7 +20,7 @@ public class Comment extends Model {
 	@Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     public Long id;
-    @Column(comment="comment")
+    @Column(name="comment")
     public String comment;
 
     public User author;
@@ -32,8 +32,8 @@ public class Comment extends Model {
         this.author = author;
     }
 
-    public static Finder<String,User> find = new Finder<String,User>(
-            String.class, User.class
+    public static Finder<String,Comment> find = new Finder<String,Comment>(
+            String.class, Comment.class
     );
 
     /*
@@ -48,7 +48,7 @@ public class Comment extends Model {
     * Return all comments of a user
     */
     public static List<Comment> allUserComments(User user){
-        List<Comment> comments = find.where().eq("author", user);
+        List<Comment> comments = Comment.find.where().eq("author", user).findList();
         return comments;
     }
     

@@ -68,7 +68,7 @@ public class Article extends Model {
     }
 
     public void removeComment(Comment com) {
-        this.comments.delete(com);
+        this.comments.remove(com);
     }
 
     public static void removeComment(Article a, Comment com){
