@@ -10,8 +10,8 @@ insert into keyword(name) values('sexy');
 
 CREATE TABLE article_keyword(
 	id LONG PRIMARY KEY,
-	article_id LONG, foreign key references article(id),
-	keyword_id LONG foreign key references keyword(id)
+	article_id LONG references article(id),
+	keyword_id LONG references keyword(id)
 );
 
 insert into article_keyword(article_id, keyword_id) values(0, 0);
