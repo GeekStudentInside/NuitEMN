@@ -2,6 +2,7 @@ package models;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -29,13 +30,9 @@ public class Article extends Model {
 
     public static List<Article> nbArticles(int n){
         List<Article> articles= Article.find.all();
-        int a= articles.size();
-        int c=(int) Math.random()*a;
-        if(c+n-1>a){
-            c=c-n+1;
-        }
+        Collections.shuffle(articles);
 
-        articles.subList(c, c + n-1);
+        articles.subList(0,n);
 
 
 
