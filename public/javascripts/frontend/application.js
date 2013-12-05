@@ -1,25 +1,26 @@
-$(function(){
-
-	function getFiveProducts() {
+//$(function(){
+//Called in articleDetails.js when DOM is loaded
+function onload(){
+	 function getFiveProducts() {
 		$.ajax({
-			url: "/getProducts", 
-			type: "GET",
-			dataType:"json",
-			success: function(data) {
-				$.each(data, function(i, article){
-					var divArticle = $("<div/>", {class:"article"});
-					divArticle.append($("<p/>", {class:"article_name"}).append(article.name));
-					divArticle.append($("<img/>", {class:"article_url"}).attr("src", article.url));
-					divArticle.appendTo($(document.body));
-					//au clic sur un article changement de style
-					divArticle.on("click", function() {
-						$(".article.activity").removeClass("activity");
-						$(this).addClass("activity");
-					});
-				});
-			}
-		});
-	}
-	getFiveProducts();	
+            url: "/getProducts",
+            type: "GET",
+            dataType:"json"
+        }).done(function(data)
+            {
+                for(var i = 0 ; i < data.length ; ++i)
+                {
+                    var article = data[i];
+                    var divArticle = $('<div class="article"></div>');
+                    var nameArticle = '<p class="article_name" style="display : none">' + article.name + '</p>';
+                    var imgArticle = '<img src="' + /*article.url*/'http://placekitten.com/200/300' + '" class="article_url"/>';
+                    divArticle.append($(nameArticle));
+                    divArticle.append($(imgArticle));
+                    $('body').append(divArticle);
+		        }
+            });
+	 }
+	 getFiveProducts();
+}
 
-});
+//});
