@@ -18,6 +18,7 @@ table.titre td {
 .article.activated {
     background: #d3d3d3;
     border-color: #333;
+    border-width: 3px;
 }
 
 [type="submit"] {
@@ -50,7 +51,7 @@ table tr:nth-of-type(even) {
     background-color : #272722;
 
 }
-.history a{
+.history a {
     padding : 14px 5px 0px 5px;
     margin: 5px 3px 0px 3px;
     vertical-align: middle;
