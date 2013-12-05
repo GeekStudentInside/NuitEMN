@@ -13,8 +13,8 @@ public class Application extends Controller {
 
     public static Result index() {
         return ok(index.render("Your new application is ready."));
-        List<Article> articles= Article.nbArticles(5);
-        return ok(index.render("NuitInfo"));
+        //List<Article> articles= Article.nbArticles(5);
+        //return ok(index.render("NuitInfo"));
     }
     
     public static Result getArticle(){

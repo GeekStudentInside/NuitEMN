@@ -27,6 +27,13 @@ public class Article extends Model {
     public String url;
     
     @ManyToMany(mappedBy="articles")
+    @JoinTable(name="article_keyword",
+    		joinColumns = {@JoinColumn(
+            name = "article_id", 
+            referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(
+                  name="keyword_id",
+                  referencedColumnName = "id")})
     public List<Keyword> keywords;
     
     public Article(){
