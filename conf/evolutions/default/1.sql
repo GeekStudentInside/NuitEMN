@@ -9,7 +9,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE article (
-  id INTEGER PRIMARY KEY AUTO_INCREMENT, --change in default nextval('rank_id_seq'),
+  id INTEGER PRIMARY KEY default nextval('rank_id_seq'),
   name varchar(100),
   url varchar(200)
 ) ;
