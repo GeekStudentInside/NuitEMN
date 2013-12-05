@@ -8,7 +8,7 @@ CREATE TABLE users (
 
 );
 
-INSERT INTO  users (email, name, password) values ('blondeau.gui@gmail.com', 'Guillaume Blondeau', 'test')
+INSERT INTO  users (email, name, password) values ('blondeau.gui@gmail.com', 'Guillaume Blondeau', 'test');
 
 # --- !Downs
 
