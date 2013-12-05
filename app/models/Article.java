@@ -26,8 +26,12 @@ public class Article extends Model {
     @Column(name="url")
     public String url;
     
-    @ManyToMany(mappedBy = "articles")
+    @ManyToMany
     public List<Keyword> keywords;
+    
+    public Article(){
+    	
+    }
 
     public Article(String name, String url){
         this.url=url;

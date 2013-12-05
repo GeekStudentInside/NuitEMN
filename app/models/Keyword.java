@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.Constraint;
@@ -29,8 +30,13 @@ public class Keyword extends Model{
 	@Column(name="key")
 	public String key;
 	
-	@ManyToMany(mappedBy = "keywords")
+	@ManyToMany
+	@JoinTable(name="article_keyword")
 	public List<Article> articles;
+	
+	public Keyword(){
+		
+	}
 	
 	public Keyword(String key){
 		this.key = key;
