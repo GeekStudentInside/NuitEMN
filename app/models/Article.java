@@ -36,4 +36,18 @@ public class Article extends Model {
         articles.subList(0,n);
         return articles;
     }
+    
+    public static void delete(Article a){
+    	a.delete();
+    }
+    
+    public void modify(String name, String url){
+    	this.name = name;
+    	this.url = url;
+    }
+    
+    public static void modify(Article a, String name, String url){
+    	a.modify(name, url);
+    }
+    
 }
