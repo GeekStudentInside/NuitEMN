@@ -8,24 +8,20 @@
             @form.globalError.message
             </p>
         }
-        <fieldset>
-            <legend>Login</legend>
-            <table>
-                <tbody>
-                    <tr>
-                        <div class="large-4 columns">
-                            <input type="email" class="large-4 columns" name="email" placeholder="Email" value="@form("email").value">
-                        </div>
-                    </tr>
-                    <tr>
-                        <div class="large-2 columns">
-                            <input type="password" class="large-4 columns" name="password" placeholder="Password">
-                        </div>
-                    </tr>
-                </tbody>
+        <form>
+            <fieldset>
+                <legend>Login</legend>
+                <div class="large-4 columns">
+                    <input type="email" name="email" placeholder="Email" value="@form("email").value">
+                </div>
+                <br/>
+                <div class="large-2 columns">
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+                <br/>
                 <button type="submit">Login</button>
-            </table>
-        </fieldset>
+            </fieldset>
+        </form>
     }
 
 }
