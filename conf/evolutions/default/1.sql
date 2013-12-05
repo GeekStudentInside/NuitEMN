@@ -5,7 +5,8 @@ CREATE SEQUENCE rank_id_seq;
 CREATE TABLE users (
     email VARCHAR (100) PRIMARY KEY ,
     name VARCHAR (255),
-    password VARCHAR (255)
+    password VARCHAR (255),
+    isadmin TINYINT
 );
 
 CREATE TABLE article (
@@ -21,7 +22,7 @@ INSERT into article (name,url) values
 ('guitare','guitare.jpg') ,
 ('retroprojecteur','retropro.jpg');
 
-INSERT INTO  users (email, name, password) values ('blondeau.gui@gmail.com', 'Guillaume Blondeau', 'test');
+INSERT INTO  users (email, name, password, isAdmin) values ('blondeau.gui@gmail.com', 'Guillaume Blondeau', 'test', 1);
 
 # --- !Downs
 
