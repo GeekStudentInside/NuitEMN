@@ -13,5 +13,9 @@ table.titre td {
     padding:0px;
     height: 35px;
     margin-left: 5px;
+}
 
+.article.activated {
+    background: #d3d3d3;
+    border-color: #333;
 }
