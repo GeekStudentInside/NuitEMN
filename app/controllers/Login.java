@@ -1,7 +1,7 @@
 package controllers;
 
 import com.avaje.ebean.Ebean;
-import models.User;
+import models.Users;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -20,7 +20,7 @@ public class Login extends Controller {
         public String email;
         public String password;
         public String validate() {
-            if (User.authenticate(email, password) == null) {
+            if (Users.authenticate(email, password) == null) {
                 return "Invalid user or password";
             }
             return null;
@@ -34,7 +34,7 @@ public class Login extends Controller {
         } else {
             session().clear();
             session("email", loginForm.get().email);
-            User current = Ebean.find(User.class).where().eq("email", loginForm.get().email).findUnique();
+            Users current = Ebean.find(Users.class).where().eq("email", loginForm.get().email).findUnique();
             session("name", current.name);
             return redirect(
                     routes.Application.index()
