@@ -23,7 +23,6 @@ create table Comment (
   constraint pk_Comment primary key (id))
 ;
 
-
 INSERT into article (name,url) values
 ('tablette','tablette.jpg'),
 ('ordinateur','ordi.jpg'),

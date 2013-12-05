@@ -40,7 +40,7 @@
                     </li>
                 </ul>
             } else {
-                @if(user.isAdmin) {
+                @if(session.get("isAdmin").equals("true")) {
                     <li class="has-dropdown not-click">
                         <a href="#">Administration</a>
                         <ul class="dropdown">
