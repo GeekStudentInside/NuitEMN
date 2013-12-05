@@ -9,6 +9,7 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/normalize.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/foundation.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/perso.css")">
 
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
 
@@ -20,14 +21,33 @@
         <nav class="top-bar" data-topbar>
             <ul class="title-area">
                 <li class="name">
-                    <h1><a href="#">My site</a></h1>
+                    <table class="titre">
+                        <tr>
+                            <td>
+                                <img class="logo-emn" src="@routes.Assets.at("images/mines_nantes_logo_white.png")"/>
+                            </td>
+                            <td>
+                                <h1>
+                                    <a href="#">My site</a>
+                                </h1>
+                            </td>
+                        </tr>
+                    </table>
                 </li>
             </ul>
 
             <section class="top-bar-section">
+                <ul class="left">
+            </ul>
+
+
             @if(session.isEmpty){
                 <ul class="right">
                     <li><a href="@routes.Login.login">Login</a></li>
+
+                    <li>
+                        <a href="#"> Sign In</a>
+                    </li>
                 </ul>
             } else {
                 <ul class="right">
@@ -35,6 +55,7 @@
                     <li><a href="@routes.Login.logout">Logout</a></li>
                 </ul>
             }
+
             </section>
         </nav>
 
