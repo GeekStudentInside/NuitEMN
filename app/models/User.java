@@ -17,11 +17,13 @@ public class User extends Model {
     public String email;
     public String name;
     public String password;
+    public Boolean isAdmin;
 
-    public User(String email, String name, String password) {
+    public User(String email, String name, String password, Boolean isAdmin) {
         this.email = email;
         this.name = name;
         this.password = password;
+        this.isAdmin = isAdmin;
     }
 
     public static Finder<String, User> find = new Finder<String, User>(
@@ -37,10 +39,11 @@ public class User extends Model {
         user.delete();
     }
 
-    public static void modify(User user, String email, String name, String password){
+    public static void modify(User user, String email, String name, String password, Boolean isAdmin){
         user.email = email;
         user.name = name;
         user.password = password;
+        user.isAdmin = isAdmin;
         user.update();
     }
 

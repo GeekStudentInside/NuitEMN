@@ -3,15 +3,36 @@
 @main("Welcome to Play") {
 
     @helper.form(routes.Login.authenticate) {
-        <h1>Sign in</h1>
         @if(form.hasGlobalErrors) {
             <p class="error">
             @form.globalError.message
             </p>
         }
-        <input type="email" name="email" placeholder="Email" value="@form("email").value">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Login</button>
+        <form>
+            <fieldset>
+                <legend>Login</legend>
+
+                <table class="formulaire">
+                    <tr><td>
+                        <div class="large-24 columns">
+                            <legend>Please login</legend>
+                            <br>
+                            <input type="email" name="email" placeholder="Email" value="@form("email").value">
+                        </div>
+                    </td></tr>
+                    <tr><td>
+                        <div class="large-24 columns">
+                            <input type="password" name="password" placeholder="Password">
+                        </div>
+                    </td></tr>
+                    <tr><td>
+                        <button type="submit">Login</button>
+                        <br>
+                        <br>
+                    </td></tr>
+                </table>
+            </fieldset>
+        </form>
     }
 
 }
