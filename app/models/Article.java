@@ -12,15 +12,20 @@ import java.util.List;
 @Table(name = "Article")
 public class Article extends Model {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7383413412594525585L;
+	
+	@Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     public Long id;
     @Column(name="name")
     public String name;
-    @Column(name="url")
+
     public String url;
 
-    public Article(String name,String url){
+    public Article(String name, String url){
         this.url=url;
         this.name=name;
     }
