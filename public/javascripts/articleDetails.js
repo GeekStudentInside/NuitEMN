@@ -9,7 +9,6 @@ function visibleDetails()
 
     for(var i = 0 ; i < article.children.length ; ++i)
     {
-        console.log(article.children[i])
         article.children[i].style.display = newStyle;
     }
     article.getElementsByClassName('article_url')[0 ].style.display = 'block';
@@ -74,10 +73,35 @@ function addToHistory()
     }
 }
 
-var articles = $('.article');
-for(var i = 0 ; i < articles.length ; ++i)
-{
-    articles[i].addEventListener('mouseover', visibleDetails);
-    articles[i].addEventListener('mouseout', visibleDetails);
-    articles[i].addEventListener('click', selectedArticle);
-}
+document.addEventListener('DOMContentLoaded', function(){
+    /*$.when(onload()).done(function(){
+        var articles = $('.article');
+        console.log($('.article'));
+        for(var i = 0 ; i < articles.length ; ++i)
+        {
+            articles[i].addEventListener('mouseover', visibleDetails);
+            articles[i].addEventListener('mouseout', visibleDetails);
+            articles[i].addEventListener('click', selectedArticle);
+        }
+    });*/
+    onload();
+    $(window).bind("load", function() {
+        var articles = $('.article');
+        for(var i = 0 ; i < articles.length ; ++i)
+        {
+            articles[i].addEventListener('mouseover', visibleDetails);
+            articles[i].addEventListener('mouseout', visibleDetails);
+            articles[i].addEventListener('click', selectedArticle);
+        }
+    });
+
+});
+
+/*setTimeout(function(){var articles = $('.article');
+    console.log($('.article'));
+    for(var i = 0 ; i < articles.length ; ++i)
+    {
+        articles[i].addEventListener('mouseover', visibleDetails);
+        articles[i].addEventListener('mouseout', visibleDetails);
+        articles[i].addEventListener('click', selectedArticle);
+    }}, 1000);*/
