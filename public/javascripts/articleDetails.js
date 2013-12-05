@@ -12,7 +12,7 @@ function visibleDetails()
         console.log(article.children[i])
         article.children[i].style.display = newStyle;
     }
-    article.getElementsByClassName('article_img')[0 ].style.display = 'block';
+    article.getElementsByClassName('article_url')[0 ].style.display = 'block';
 }
 
 function selectedArticle()
@@ -29,10 +29,37 @@ function selectedArticle()
     }
 }
 
-var products = $('.article');
-for(var i = 0 ; i < products.length ; ++i)
+function getSelectedArticles()
 {
-    products[i].addEventListener('mouseover', visibleDetails);
-    products[i].addEventListener('mouseout', visibleDetails);
-    products[i].addEventListener('click', selectedArticle);
+    var articles = $('.article');
+    var selectedArticles = new Array();
+    for(var i = 0 ; i < articles.length ; ++i)
+    {
+        var article = articles[i];
+        if(article.classList.contains('activated'))
+            selectedArticles.push(
+                '' + article.getElementsByClassName('article_name')[0].innerHTML + '',
+                '' + article.getElementsByClassName('article_url')[0].src + ''
+            )
+    }
+    return selectedArticles;
+}
+
+function sendSelectedArticles()
+{
+    var selectedArticles = getSelectedArticles();
+    $.ajax(
+        {url : "selectedArticlesURL",
+    data : selectedArticles}
+    ).done(function (){
+
+        })
+}
+
+var articles = $('.article');
+for(var i = 0 ; i < articles.length ; ++i)
+{
+    articles[i].addEventListener('mouseover', visibleDetails);
+    articles[i].addEventListener('mouseout', visibleDetails);
+    articles[i].addEventListener('click', selectedArticle);
 }
