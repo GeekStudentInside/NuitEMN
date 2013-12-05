@@ -37,10 +37,10 @@ function getSelectedArticles()
     {
         var article = articles[i];
         if(article.classList.contains('activated'))
-            selectedArticles.push(
+            selectedArticles.push(new Array(
                 '' + article.getElementsByClassName('article_name')[0].innerHTML + '',
                 '' + article.getElementsByClassName('article_url')[0].src + ''
-            )
+            ));
     }
     return selectedArticles;
 }
@@ -52,8 +52,26 @@ function sendSelectedArticles()
         {url : "selectedArticlesURL",
     data : selectedArticles}
     ).done(function (){
-
+            addHistory();
         })
+}
+
+function addHistory()
+{
+    var history = $(".history")[0];
+    var ulrArray = new Array();
+    var selectedArticles = getSelectedArticles();
+
+    for(var i = 0 ; i < selectedArticles.lenght ; ++i)
+    {
+        urlArray.push(selectedArticles[i][1]);
+    }
+    for(var i = 0 ; i < urlArray.lenght ; ++i)
+    {
+        var url = urlArray[i];
+        var img = $('<img src="' + url + '" class="history_img"/>');
+        history.append(img);
+    }
 }
 
 var articles = $('.article');
