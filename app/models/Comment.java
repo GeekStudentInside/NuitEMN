@@ -20,12 +20,13 @@ public class Comment extends Model {
 	@Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     public Long id;
+
     @Column(name="comment")
     public String comment;
 
+    @ManyToOne
+    @JoinColumn(name = "author")
     public User author;
-
-    
 
     public Comment(String comment, User author){
         this.comment = comment;
