@@ -12,6 +12,7 @@ $(function(){
 					divArticle.appendTo($(document.body));
 					//au clic sur un article changement de style
 					divArticle.on("click", function() {
+						$(".article.activity").removeClass("activity");
 						$(this).addClass("activity");
 					});
 				});
