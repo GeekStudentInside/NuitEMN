@@ -11,15 +11,26 @@
         <form>
             <fieldset>
                 <legend>Login</legend>
-                <div class="large-4 columns">
-                    <input type="email" name="email" placeholder="Email" value="@form("email").value">
-                </div>
-                <br/>
-                <div class="large-2 columns">
-                    <input type="password" name="password" placeholder="Password">
-                </div>
-                <br/>
-                <button type="submit">Login</button>
+
+                <table class="formulaire">
+                    <tr><td>
+                        <div class="large-24 columns">
+                            <legend>Please login</legend>
+                            <br>
+                            <input type="email" name="email" placeholder="Email" value="@form("email").value">
+                        </div>
+                    </td></tr>
+                    <tr><td>
+                        <div class="large-24 columns">
+                            <input type="password" name="password" placeholder="Password">
+                        </div>
+                    </td></tr>
+                    <tr><td>
+                        <button type="submit">Login</button>
+                        <br>
+                        <br>
+                    </td></tr>
+                </table>
             </fieldset>
         </form>
     }
