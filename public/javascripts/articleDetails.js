@@ -52,11 +52,11 @@ function sendSelectedArticles()
         {url : "selectedArticlesURL",
     data : selectedArticles}
     ).done(function (){
-            addHistory();
+            addToHistory();
         })
 }
 
-function addHistory()
+function addToHistory()
 {
     var history = $(".history")[0];
     var ulrArray = new Array();
@@ -69,7 +69,7 @@ function addHistory()
     for(var i = 0 ; i < urlArray.lenght ; ++i)
     {
         var url = urlArray[i];
-        var img = $('<img src="' + url + '" class="history_img"/>');
+        var img = $('<a><img src="' + url + '" class="history_img"/></a>');
         history.append(img);
     }
 }
