@@ -26,7 +26,7 @@ public class Article extends Model {
     @Column(name="url")
     public String url;
     
-    @ManyToMany
+    @ManyToMany(mappedBy="articles")
     public List<Keyword> keywords;
     
     public Article(){

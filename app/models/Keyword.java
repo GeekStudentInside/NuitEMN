@@ -30,7 +30,7 @@ public class Keyword extends Model{
 	@Column(name="key")
 	public String key;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="keywords")
 	@JoinTable(name="article_keyword")
 	public List<Article> articles;
 	
