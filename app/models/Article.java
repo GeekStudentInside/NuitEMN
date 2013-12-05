@@ -14,7 +14,7 @@ public class Article extends Model {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long id;
+    public Long id;
     @Column(name="name")
     public String name;
     @Column(name="url")
@@ -24,6 +24,7 @@ public class Article extends Model {
         this.url=url;
         this.name=name;
     }
+
     public static Finder<Long,Article> find = new Finder<Long,Article>(
             Long.class ,Article.class
     );
@@ -33,8 +34,6 @@ public class Article extends Model {
         Collections.shuffle(articles);
 
         articles.subList(0,n);
-
-
-
+        return articles;
     }
 }
