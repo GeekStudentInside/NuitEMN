@@ -51,6 +51,26 @@ public class Application extends Controller {
         return ok(Json.toJson(Article.nbArticles(9)));
     }
 
+
+
+    public static Result getRelatedArticles(){
+        JsonNode jsonlist = request().body().asJson();
+        System.out.print(jsonlist);
+        for (int i = 0; i < jsonlist.size(); i++) {
+            JsonNode json = jsonlist.get(i);
+            String keyword = json.findPath("name").textValue();
+            List<Article> newArticles = Article.find.where(" keyword='"+keyword+"'").findList() ;
+            Ebean.beginTransaction();
+            Ebean.save(newArticles);
+            Ebean.commitTransaction();
+            Ebean.endTransaction();
+
+        }
+        return ok("coucou");
+    }
+
+
+
     public static Result getAllLinks() {
         List<Link> links = Link.find.all();
         JsonSerializer ser = new JsonSerializer();
