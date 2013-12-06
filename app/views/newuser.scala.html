@@ -1,0 +1,50 @@
+@(form: Form[Login.NewForm])
+
+@main("My Site") {
+    @helper.form(routes.Login.creationuser) {
+    <fieldset>
+        <legend>New Profil</legend>
+
+        <table class="formulaire">
+            <tr><td>
+                <div class="large-24 columns">
+                    <legend></legend>
+                    <br>
+                    <input type="text" name="name" placeholder="Name" value="">
+                </div>
+            </td></tr>
+            <tr><td>
+                <div class="large-24 columns">
+                    <br>
+                    <input type="email" name="email" placeholder="Email" value="">
+                </div>
+            </td></tr>
+            <tr><td>
+                <div class="large-24 columns">
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+            </td></tr>
+			<tr><td>
+                <div class="large-24 columns">
+                    <input type="password" name="password2" placeholder="Password">
+                </div>
+            </td></tr>
+           <tr><td>Importer une photo (optionel) : </td>
+		   </tr>
+		   <tr>
+				<td>
+					<a id="file" href="">
+						upload file
+						<input id="upload" type="file">
+					</a> 
+				</td>
+			</tr>
+
+		   <tr><td>
+                <button type="submit">Add</button>
+                <br>
+                <br>
+            </td></tr>
+        </table>
+    </fieldset>
+} }
