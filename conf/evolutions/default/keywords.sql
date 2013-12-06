@@ -16,7 +16,7 @@ CREATE TABLE article_keyword(
 
 insert into article_keyword(article_id, keyword_id) values(0, 0);
 insert into article_keyword(article_id, keyword_id) values(1, 1);
-
+# --- !Downs
 delete from keyword;
 delete from article_keyword;
 
