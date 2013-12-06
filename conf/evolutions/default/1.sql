@@ -47,7 +47,13 @@ INSERT into article (name,url) values
 ('ordinateur','ordi.jpg'),
 ('table','table.jpg'),
 ('guitare','guitare.jpg') ,
-('retroprojecteur','retropro.jpg');
+('retroprojecteur','retropro.jpg'),
+('bouteille','bouteille.jpg'),
+('goblet','goblet.jpg'),
+('souris','souris.jpg'),
+('barquettes','barquettes.jpg'),
+('ecolier','ecolier.jpg'),
+('ecran','ecran.jpg');
 
 INSERT INTO  users (email, name, password, isAdmin) values ('blondeau.gui@gmail.com', 'Guillaume Blondeau', 'test', true);
 
