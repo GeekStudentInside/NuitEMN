@@ -56,7 +56,7 @@ function sendSelectedArticles()
             $('li .article').remove();
             $('#articles-content li').each(function(index, liElem){
                 $.ajax({ url : '/getProductById',
-                    data : newIds[i++]
+                    data : {id : newIds[i++]}
                 }).done(addArticle);
 
                 function addArticle(article)
@@ -68,6 +68,12 @@ function sendSelectedArticles()
                     divArticle.appendTo(liElem);
                 }
             })
+            $('.article_name').css('display', 'none');
+
+            var articles = $('.article');
+            articles.each(function(index, valeur){
+                $(this).on('mouseover', visibleDetails).on('mouseout', visibleDetails).on('click', selectArticle);
+            });
         });
 
     /*$.ajax({
