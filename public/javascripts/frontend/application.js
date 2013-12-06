@@ -1,27 +1,33 @@
-$(function(){
-//Called in articleDetails.js when DOM is loaded
-function onload(){
-	 function getFiveProducts() {
-		$.ajax({
-			url: "/getProducts", 
-			type: "GET",
-			dataType:"json",
-			success: function(data) {
-				$.each(data, function(i, article){
-					var divArticle = $("<div/>", {class:"article large-4"});
-					divArticle.append($("<p/>", {class:"article_name"}).append(article.name));
-					divArticle.append($("<img/>", {class:"article_url"}).attr("src", article.url));
-					// var imgArticle = '<img src="' + /*article.url*/'http://placekitten.com/200/300' + '" class="article_url"/>';
-					divArticle.appendTo($(document.body));
-					//au clic sur un article changement de style
-					divArticle.on("click", function() {
-						$(".article.activity").removeClass("activity");
-						$(this).addClass("activity");
-					});
-				});
-			}
-		});
-	}
-	getFiveProducts();
+function getFiveProducts() {
+    $.ajax({
+        url: "/getProducts",
+        type: "GET",
+        dataType:"json",
+        success: function(data) {
+            var content = $('#articles-content');
 
-});
+            var listContent = $('<ul class="small-block-grid-3 medium-block-grid-3 large-block-grid-3"></ul>');
+
+            content.append(listContent)
+
+            $.each(data, function(i, article){
+                var liArticle = $('<li></li>')
+                var divArticle = $("<div/>", {class:"article"});
+                var pName = $("<p/>", {class:"article_name"});
+                divArticle.append(pName.append(article.name));
+                divArticle.append($("<img/>", {class:"article_url"}).attr("src", '/assets/images/articles/' + article.url));
+                divArticle.appendTo(liArticle);
+                liArticle.appendTo(listContent);
+                console.log(liArticle[0])
+            });
+
+            $('.article_name').css('display', 'none');
+
+                var articles = $('.article');
+                articles.each(function(index, valeur){
+                    $(this).on('mouseover', visibleDetails).on('mouseout', visibleDetails).on('click', selectArticle);
+             });
+        }
+    });
+
+}

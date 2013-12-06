@@ -15,15 +15,7 @@ table.titre td {
     margin-left: 5px;
 }
 
-.article {
-    border: 2px solid black;
-}
 
-.article.activated {
-    background: #d3d3d3;
-    border-color: limegreen;
-    border-width: 3px;
-}
 
 [type="submit"] {
     padding-top: 10px;
@@ -65,4 +57,22 @@ table tr:nth-of-type(even) {
 .history img {
     max-width: 100%;
     max-height:512px;
+}
+
+.article {
+    border: 3px solid rgb(125,125,125);
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+    /*width: 30%;*/
+}
+
+.article.activated {
+    background: #d3d3d3;
+    border-color: limegreen;
+    border-width: 3px;
+}
+
+.article_name {
+    display: none;
 }

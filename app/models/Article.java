@@ -19,7 +19,7 @@ public class Article extends Model {
 	private static final long serialVersionUID = -7383413412594525585L;
 	
 	@Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "rank_id_seq")
     public Long id;
     @Column(name="name")
     public String name;
@@ -61,7 +61,7 @@ public class Article extends Model {
         List<Article> articles= Article.find.all();
         Collections.shuffle(articles);
         if(n<articles.size()){
-            articles.subList(0,n);
+           articles= articles.subList(0,n);
         }
         /*for(Article article : articles){
             article.keywords = null;

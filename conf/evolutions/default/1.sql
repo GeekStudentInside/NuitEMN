@@ -24,16 +24,14 @@ create table Comment (
   author                      varchar(100),
   constraint pk_Comment primary key (id));
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 CREATE TABLE Link (
   id INTEGER PRIMARY KEY default nextval('rank_id_seq2'),
   Article1 INTEGER,
   Article2 INTEGER,
   Weight FLOAT
 );
->>>>>>> 27e9cd17381f103f91b90c039b3c9c5c59b7366b
+
 
 CREATE TABLE keyword (
   id INTEGER PRIMARY KEY default nextval('id_keyword'),
@@ -46,14 +44,19 @@ CREATE TABLE article_keyword(
   keyword_id INTEGER references keyword(id)
 );
 
-=======
->>>>>>> c9a064422e2cf3ea7cf88bfd2f25e54314efb598
+
 INSERT into article (name,url) values
 ('tablette','tablette.jpg'),
 ('ordinateur','ordi.jpg'),
 ('table','table.jpg'),
 ('guitare','guitare.jpg') ,
-('retroprojecteur','retropro.jpg');
+('retroprojecteur','retropro.jpg'),
+('bouteille','bouteille.jpg'),
+('goblet','goblet.jpg'),
+('souris','souris.jpg'),
+('barquettes','barquettes.jpg'),
+('ecolier','ecolier.jpg'),
+('ecran','ecran.jpg');
 
 INSERT INTO  users (email, name, password, isAdmin) values ('blondeau.gui@gmail.com', 'Guillaume Blondeau', 'test', true);
 

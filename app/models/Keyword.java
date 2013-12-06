@@ -33,7 +33,7 @@ public class Keyword extends Model{
 	public String name;
 	
 	/*@ManyToMany(mappedBy="keywords")
-	public List<Article> articles;*/
+    public List<Article> articles;*/
 	
 	public Keyword(){
 		
