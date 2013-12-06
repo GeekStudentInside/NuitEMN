@@ -26,7 +26,7 @@ public class Article extends Model {
     @Column(name="url")
     public String url;
     
-    @ManyToMany(mappedBy="articles")
+    @ManyToMany
     @JoinTable(name="article_keyword",
     		joinColumns = {@JoinColumn(
             name = "article_id", 
