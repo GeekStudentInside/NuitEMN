@@ -3,6 +3,7 @@ import play.db.ebean.Model;
 
 import javax.persistence.*;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -28,12 +29,12 @@ public class Article extends Model {
     
     @ManyToMany
     @JoinTable(name="article_keyword",
-    		joinColumns = {@JoinColumn(
-            name = "article_id", 
-            referencedColumnName = "id")},
+            joinColumns = {@JoinColumn(
+                    name = "article_id",
+                    referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(
-                  name="keyword_id",
-                  referencedColumnName = "id")})
+                    name="keyword_id",
+                    referencedColumnName = "id")})
     public List<Keyword> keywords;
     
     public Article(){
@@ -53,10 +54,18 @@ public class Article extends Model {
     );
 
     public static List<Article> nbArticles(int n){
+        if(n==0){
+            return new LinkedList<Article>();
+        }
+
         List<Article> articles= Article.find.all();
         Collections.shuffle(articles);
-
-        articles.subList(0,n);
+        if(n<articles.size()){
+            articles.subList(0,n);
+        }
+        /*for(Article article : articles){
+            article.keywords = null;
+        }*/
         return articles;
     }
     

@@ -9,6 +9,9 @@ import play.libs.Json;
 import play.mvc.*;
 import views.html.*;
 
+import java.util.List;
+
+
 public class Application extends Controller {
 
     public static Result index() {
@@ -37,7 +40,6 @@ public class Application extends Controller {
 
         // TODO doit pouvoir se faire avec un join dans 1 seule requete
         links.addAll(linksReverse);
-
 
         if(!links.isEmpty() && links.size() ==1){
             links.get(0).weight = weight;

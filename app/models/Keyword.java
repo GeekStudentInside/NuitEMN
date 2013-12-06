@@ -27,7 +27,7 @@ public class Keyword extends Model{
 	
 	@Id
 	@GeneratedValue
-	public Long id;
+	public Integer id;
 	
 	@Column(name="name")
 	public String name;
@@ -48,19 +48,20 @@ public class Keyword extends Model{
 	/*public void addArticle(Article a){
 		this.articles.add(a);
 		this.update();
-	}
+	}*/
 	
-	public void removeArticle(Article a){
+	/*public void removeArticle(Article a){
 		this.articles.remove(a);
 		this.update();
-	}
+	}*/
 	
-	public List<Article> getArticles(){
+	/*public List<Article> getArticles(){
 		return this.articles;
 	}
 	
 	public void setArticles(List<Article> articles){
     	this.articles = articles;
-    }
-*/
+
+    }*/
+
 }
