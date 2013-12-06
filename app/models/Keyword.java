@@ -12,7 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 @Entity  
 @Table(name="keyword")
@@ -30,8 +32,8 @@ public class Keyword extends Model{
 	@Column(name="name")
 	public String name;
 	
-	@ManyToMany(mappedBy="keywords")
-	public List<Article> articles;
+	/*@ManyToMany(mappedBy="keywords")
+	public List<Article> articles;*/
 	
 	public Keyword(){
 		
@@ -40,8 +42,10 @@ public class Keyword extends Model{
 	public Keyword(String key){
 		this.name = key;
 	}
-	
-	public void addArticle(Article a){
+	 public static Finder<Long,Keyword> find = new Finder<Long,Keyword>(
+	            Long.class ,Keyword.class
+	    );
+	/*public void addArticle(Article a){
 		this.articles.add(a);
 		this.update();
 	}
@@ -58,5 +62,5 @@ public class Keyword extends Model{
 	public void setArticles(List<Article> articles){
     	this.articles = articles;
     }
-
+*/
 }
