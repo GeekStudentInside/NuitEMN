@@ -86,12 +86,17 @@ public class Application extends Controller {
 
 
 
-            if (!links.isEmpty() && links.size() == 1) {
+            if (links.size() == 1) {
                 Link l = links.get(0);
                 Link.update(l.id, weight);
                 System.out.println("updated : art1="+l.article1.id+" art2="+l.article2.id+" weight="+weight);
 
-            } else return badRequest(Json.toJson("Empty or more that 1 link, FIX IT !!"));
+            } else
+                if(links.isEmpty()){
+                    Link newLink = new Link(Article.find.byId(Long.parseLong(a1)), Article.find.byId(Long.parseLong(a2)), weight);
+                    newLink.save();
+                } else
+                    return badRequest(Json.toJson("Empty or more that 1 link, FIX IT !!"));
 
         }
         return ok(Json.toJson("done"));
