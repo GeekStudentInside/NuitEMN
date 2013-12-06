@@ -15,6 +15,10 @@ table.titre td {
     margin-left: 5px;
 }
 
+.article {
+    border: 2px solid black;
+}
+
 .article.activated {
     background: #d3d3d3;
     border-color: limegreen;

@@ -23,6 +23,7 @@ create table Comment (
   constraint pk_Comment primary key (id))
 ;
 
+<<<<<<< HEAD
 
 CREATE TABLE users (
     email VARCHAR (100) PRIMARY KEY ,
@@ -36,6 +37,8 @@ CREATE TABLE article (
   url varchar(200)
 ) ;
 
+=======
+>>>>>>> c9a064422e2cf3ea7cf88bfd2f25e54314efb598
 INSERT into article (name,url) values
 ('tablette','tablette.jpg'),
 ('ordinateur','ordi.jpg'),
