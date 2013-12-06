@@ -94,7 +94,12 @@ public class Application extends Controller {
             } else
                 if(links.isEmpty()){
                     Link newLink = new Link(Article.find.byId(Long.parseLong(a1)), Article.find.byId(Long.parseLong(a2)), weight);
-                    newLink.save();
+                    Ebean.beginTransaction();
+                    Ebean.save(newLink);
+                    Ebean.commitTransaction();
+                    Ebean.endTransaction();
+                    System.out.println("created : art1="+newLink.article1.id+" art2="+newLink.article2.id+" weight="+weight);
+
                 } else
                     return badRequest(Json.toJson("Empty or more that 1 link, FIX IT !!"));
 

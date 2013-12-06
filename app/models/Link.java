@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class Link extends Model {
 
         @Id
-        @GeneratedValue(strategy= GenerationType.IDENTITY)
+        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rank_id_seq2")
         public Long id;
 
         @OneToOne
@@ -50,6 +50,10 @@ public class Link extends Model {
              l.weight = weight;
              l.update();
          }
+
+        public static void save(Long id) {
+
+        }
 
 
 
