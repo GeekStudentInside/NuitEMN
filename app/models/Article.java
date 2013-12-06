@@ -3,6 +3,7 @@ import play.db.ebean.Model;
 
 import javax.persistence.*;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -38,10 +39,15 @@ public class Article extends Model {
     );
 
     public static List<Article> nbArticles(int n){
+        if(n==0){
+            return new LinkedList<Article>();
+        }
+
         List<Article> articles= Article.find.all();
         Collections.shuffle(articles);
-
-        articles.subList(0,n);
+        if(n<articles.size()){
+            articles.subList(0,n);
+        }
         return articles;
     }
     
@@ -74,4 +80,5 @@ public class Article extends Model {
     public static void removeComment(Article a, Comment com){
         a.removeComment(com);
     }
+
 }

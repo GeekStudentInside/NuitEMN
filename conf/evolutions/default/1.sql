@@ -22,7 +22,6 @@ create table Comment (
   author                      varchar(100),
   constraint pk_Comment primary key (id));
 
-
 INSERT into article (name,url) values
 ('tablette','tablette.jpg'),
 ('ordinateur','ordi.jpg'),
@@ -54,4 +53,5 @@ DROP TABLE comment;
 DROP SEQUENCE rank_id_seq;
 DROP TABLE Link;
 DROP SEQUENCE rank_id_seq2;
+
 
