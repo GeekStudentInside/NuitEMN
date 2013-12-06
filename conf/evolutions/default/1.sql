@@ -20,8 +20,7 @@ create table Comment (
   id                         bigint not null,
   comment                     varchar(255),
   author                      varchar(100),
-  constraint pk_Comment primary key (id))
-;
+  constraint pk_Comment primary key (id));
 
 
 INSERT into article (name,url) values
