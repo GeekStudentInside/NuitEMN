@@ -22,8 +22,23 @@ public class Article extends Model {
     public Long id;
     @Column(name="name")
     public String name;
-
+    
+    @Column(name="url")
     public String url;
+    
+    @ManyToMany(mappedBy="articles")
+    @JoinTable(name="article_keyword",
+    		joinColumns = {@JoinColumn(
+            name = "article_id", 
+            referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(
+                  name="keyword_id",
+                  referencedColumnName = "id")})
+    public List<Keyword> keywords;
+    
+    public Article(){
+    	
+    }
 
     public List<Comment> comments;
 
@@ -59,6 +74,25 @@ public class Article extends Model {
     	a.modify(name, url);
     }
 
+    
+    public List<Keyword> getKeywords(){
+    	return this.keywords;
+    }
+    
+    public void setKeywords(List<Keyword> keys){
+    	this.keywords = keys;
+    }
+    
+    public void addKeyword(Keyword key){
+    	this.keywords.add(key);
+    }
+    
+    public void removeKeyword(Keyword key){
+    	this.keywords.remove(key);
+    }
+    
+
+
     public void addComment(Comment com) {
         this.comments.add(com);
     }
@@ -74,4 +108,5 @@ public class Article extends Model {
     public static void removeComment(Article a, Comment com){
         a.removeComment(com);
     }
+
 }

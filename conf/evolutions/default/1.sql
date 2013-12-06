@@ -24,6 +24,18 @@ create table Comment (
 ;
 
 
+CREATE TABLE users (
+    email VARCHAR (100) PRIMARY KEY ,
+    name VARCHAR (255),
+    password VARCHAR (255)
+);
+
+CREATE TABLE article (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT, --change in default nextval('rank_id_seq'),
+  name varchar(100),
+  url varchar(200)
+) ;
+
 INSERT into article (name,url) values
 ('tablette','tablette.jpg'),
 ('ordinateur','ordi.jpg'),
@@ -52,6 +64,7 @@ INSERT INTO Link (Article1, Article2, Weight) values
 DROP TABLE users;
 DROP TABLE article;
 DROP TABLE comment;
+
 DROP SEQUENCE rank_id_seq;
 DROP TABLE Link;
 DROP SEQUENCE rank_id_seq2;
