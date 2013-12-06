@@ -41,6 +41,7 @@
                 </ul>
             } else {
                 @if(session.get("isAdmin").equals("true")) {
+                    <ul class="right">
                     <li class="has-dropdown not-click">
                         <a href="#">Administration</a>
                         <ul class="dropdown">
@@ -48,8 +49,9 @@
                             <li><a href="#">Create a product</a></li>
                         </ul>
                     </li>
+                    </ul>
                 }
-                <ul class="right">
+                <ul class="left">
                     <li><a href = "#">@session.get("name")</a></li>
                     <li><a href="@routes.Login.logout">Logout</a></li>
                 </ul>
@@ -57,7 +59,7 @@
             </section>
         </nav>
 
-        <div></div>
+       <!-- <div></div> -->
         <script src="@routes.Assets.at("javascripts/underscore.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/d3.v3.min.js")" type="text/javascript"></script>

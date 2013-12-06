@@ -3,46 +3,32 @@
  */
 function visibleDetails()
 {
-    var article = this;
-    var hidden = article.getElementsByTagName('p')[0].style.display == 'none';
+    var article = $(this);
+    var hidden = article.find('p').first().css('display') == 'none';
     var newStyle = hidden ? 'block' : 'none';
 
-    for(var i = 0 ; i < article.children.length ; ++i)
-    {
-        article.children[i].style.display = newStyle;
-    }
-    article.getElementsByClassName('article_url')[0 ].style.display = 'block';
+    article.children().each(function(index, child){
+        if(!$(child).hasClass('article_url'))
+            $(child).css('display', newStyle);
+    });
 }
 
-function selectedArticle()
+function selectArticle()
 {
-    var article = this;
-    var selected = article.classList.contains('activated');
-    if(!selected)
-    {
-        article.classList.add('activated');
-    }
+    var article = $(this);
+    var selected = article.hasClass('activated')
+    if(selected)
+        article.removeClass('activated')
     else
-    {
-        article.classList.remove('activated');
-    }
+        article.addClass('activated')
 }
 
 function getSelectedArticles()
 {
-    var articles = $('.article');
     var selectedArticles = new Array();
-    for(var i = 0 ; i < articles.length ; ++i)
-    {
-        var article = articles[i];
-        if(article.classList.contains('activated'))
-            {
-            selectedArticles.push(new Array(
-                '' + article.getElementsByClassName('article_name')[0].innerHTML + '',
-                '' + article.getElementsByClassName('article_url')[0].src + ''
-            ));
-        }
-    }
+    $('.article.activated').each(function(index, article){
+        selectedArticles.push([$(article).find('.article_name').html(), $(article).find('.article_url').attr('src')]);
+    });
     return selectedArticles;
 }
 
@@ -51,11 +37,11 @@ function sendSelectedArticles()
     var selectedArticles = getSelectedArticles();
     addToHistory();
     /*$.ajax(
-        {url : "selectedArticlesURL",
-    data : selectedArticles}
-    ).done(function (){
-            addToHistory();
-        })*/
+     {url : "selectedArticlesURL",
+     data : selectedArticles}
+     ).done(function (){
+     addToHistory();
+     })*/
 }
 
 function addToHistory()
@@ -64,47 +50,23 @@ function addToHistory()
     var urlArray = new Array();
     var selectedArticles = getSelectedArticles();
 
-    for(var i = 0 ; i < selectedArticles.length ; ++i)
-    {
-        urlArray.push(selectedArticles[i][1]);
-    }
-    for(var i = 0 ; i < urlArray.length ; ++i)
-    {
-        var url = urlArray[i];
-        var img = $('<a><img src="' + url + '" class="history_img" style="height : 100%"/></a>');
-        history.append(img);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function(){
-    /*$.when(onload()).done(function(){
-        var articles = $('.article');
-        console.log($('.article'));
-        for(var i = 0 ; i < articles.length ; ++i)
-        {
-            articles[i].addEventListener('mouseover', visibleDetails);
-            articles[i].addEventListener('mouseout', visibleDetails);
-            articles[i].addEventListener('click', selectedArticle);
-        }
-    });*/
-    onload();
-    $(window).bind("load", function() {
-        var articles = $('.article');
-        for(var i = 0 ; i < articles.length ; ++i)
-        {
-            articles[i].addEventListener('mouseover', visibleDetails);
-            articles[i].addEventListener('mouseout', visibleDetails);
-            articles[i].addEventListener('click', selectedArticle);
-        }
+    $.each(selectedArticles, function(index, article){
+        urlArray.push(article[1]);
     });
 
-});
+    $.each(urlArray, function(index, url){
+        var img = $('<a><img src="' + url + '" class="history_img"/></a>');
+        history.append(img);
+    });
+}
 
-/*setTimeout(function(){var articles = $('.article');
-    console.log($('.article'));
-    for(var i = 0 ; i < articles.length ; ++i)
-    {
-        articles[i].addEventListener('mouseover', visibleDetails);
-        articles[i].addEventListener('mouseout', visibleDetails);
-        articles[i].addEventListener('click', selectedArticle);
-    }}, 1000);*/
+$(function(){
+    getFiveProducts();
+    $(window).on("load", function() {
+        var articles = $('.article');
+        console.log(articles)
+        articles.each(function(index, valeur){
+            $(this).on('mouseover', visibleDetails).on('mouseout', visibleDetails).on('click', selectArticle);
+        });
+    });
+});
