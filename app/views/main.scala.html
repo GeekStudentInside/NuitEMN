@@ -32,15 +32,17 @@
             </ul>
 
             <section class="top-bar-section">
-            @if(session.isEmpty){
                 <ul class="right">
+            @if(session.isEmpty){
+                <li class="divider"></li>
                     <li><a href="@routes.Login.login">Login</a></li>
+                <li class="divider"></li>
                     <li>
                         <a href="@routes.Login.login">Sign Up</a>
                     </li>
-                </ul>
             } else {
                 @if(session.get("isAdmin").equals("true")) {
+                    <li class="divider"></li>
                     <li class="has-dropdown not-click">
                         <a href="#">Administration</a>
                         <ul class="dropdown">
@@ -48,12 +50,13 @@
                             <li><a href="#">Create a product</a></li>
                         </ul>
                     </li>
+                    <li class="divider"></li>
                 }
-                <ul class="right">
                     <li><a href = "#">@session.get("name")</a></li>
+                    <li class="divider"></li>
                     <li><a href="@routes.Login.logout">Logout</a></li>
-                </ul>
             }
+                    </ul>
             </section>
         </nav>
 
