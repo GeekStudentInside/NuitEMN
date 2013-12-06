@@ -2,6 +2,7 @@ package models;
 
 import play.db.ebean.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -17,6 +18,8 @@ public class User extends Model {
     public String email;
     public String name;
     public String password;
+
+    @Column(name = "isAdmin")
     public Boolean isAdmin;
 
     public User(String email, String name, String password, Boolean isAdmin) {
