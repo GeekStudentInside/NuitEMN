@@ -3,9 +3,11 @@
 CREATE SEQUENCE rank_id_seq;
 
 CREATE TABLE users (
+
     email VARCHAR (100) PRIMARY KEY ,
     name VARCHAR (255),
-    password VARCHAR (255)
+    password VARCHAR (255),
+    isadmin BOOLEAN
 );
 
 CREATE TABLE article (
@@ -14,6 +16,14 @@ CREATE TABLE article (
   url varchar(200)
 ) ;
 
+create table Comment (
+  id                         bigint not null,
+  comment                     varchar(255),
+  author                      varchar(100),
+  constraint pk_Comment primary key (id))
+;
+
+
 INSERT into article (name,url) values
 ('tablette','tablette.jpg'),
 ('ordinateur','ordi.jpg'),
@@ -21,7 +31,7 @@ INSERT into article (name,url) values
 ('guitare','guitare.jpg') ,
 ('retroprojecteur','retropro.jpg');
 
-INSERT INTO  users (email, name, password) values ('blondeau.gui@gmail.com', 'Guillaume Blondeau', 'test');
+INSERT INTO  users (email, name, password, isAdmin) values ('blondeau.gui@gmail.com', 'Guillaume Blondeau', 'test', true);
 
 # --- !Downs
 
@@ -33,5 +43,6 @@ DELETE from article where name= 'guitare';
 DELETE from article where name= 'retroprojecteur';
 DROP TABLE users;
 DROP TABLE article;
+DROP TABLE comment;
 DROP SEQUENCE rank_id_seq;
 
