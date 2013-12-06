@@ -17,6 +17,8 @@ GET         /logout              controllers.Login.logout()
 GET         /getProducts        controllers.Application.getArticle()
 
 GET         /getLinks           controllers.Application.getAllLinks()
+POST        /setWeight           controllers.Application.setWeight()
 
 # Route
 GET         /test               controllers.Test.test()
+

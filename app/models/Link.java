@@ -3,8 +3,7 @@ package models;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
-import java.util.Collections;
-import java.util.List;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -41,7 +40,17 @@ public class Link extends Model {
 
         public static Finder<Long,Link> find = new Finder<Long,Link>(
                 Long.class ,Link.class
-        );
+        ) ;
+
+        public static void delete(Long id){
+            find.ref(id).delete();
+        }
+         public static void update(Long id, float weight){
+            Link l = find.ref(id);
+             l.weight = weight;
+             l.update();
+         }
+
 
 
 }
