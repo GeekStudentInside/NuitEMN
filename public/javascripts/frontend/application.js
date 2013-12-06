@@ -22,6 +22,11 @@ function getFiveProducts() {
             });
 
             $('.article_name').css('display', 'none');
+
+                var articles = $('.article');
+                articles.each(function(index, valeur){
+                    $(this).on('mouseover', visibleDetails).on('mouseout', visibleDetails).on('click', selectArticle);
+             });
         }
     });
 

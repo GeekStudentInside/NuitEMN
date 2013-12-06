@@ -54,7 +54,9 @@ function addToHistory()
     });
 }
 
-$(function(){
+$(function(){getFiveProducts()});
+
+/*$(function(){
     getFiveProducts();
     //$(window).on("load", function() {
     setTimeout(function(){
@@ -63,4 +65,4 @@ $(function(){
             $(this).on('mouseover', visibleDetails).on('mouseout', visibleDetails).on('click', selectArticle);
         });
     }, 1000);
-});
+});*/
