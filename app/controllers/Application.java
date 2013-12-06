@@ -32,7 +32,7 @@ public class Application extends Controller {
 
     public static Result getArticle() {
 
-        return ok(Json.toJson(Article.nbArticles(5)));
+        return ok(Json.toJson(Article.nbArticles(9)));
     }
 
     public static Result getAllLinks() {
