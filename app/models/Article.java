@@ -61,7 +61,7 @@ public class Article extends Model {
         List<Article> articles= Article.find.all();
         Collections.shuffle(articles);
         if(n<articles.size()){
-            articles.subList(0,n);
+           articles= articles.subList(0,n);
         }
         /*for(Article article : articles){
             article.keywords = null;
