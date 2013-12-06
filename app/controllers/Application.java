@@ -16,4 +16,5 @@ public class Application extends Controller {
     public static Result getArticle(){
         return ok(Json.toJson(Article.nbArticles(5)));
     }
+
 }

@@ -50,4 +50,8 @@ public class Login extends Controller {
                 routes.Application.index()
         );
     }
+
+    public static Result newuser() {
+        return ok();
+    }
 }
