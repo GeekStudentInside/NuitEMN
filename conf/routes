@@ -10,7 +10,9 @@ GET         /assets/*file        controllers.Assets.at(path="/public", file)
 
 # Login
 GET         /login               controllers.Login.login()
+GET         /newuser             controllers.Login.newuser()
 POST        /login               controllers.Login.authenticate()
+POST        /signin              controllers.Login.creationuser()
 GET         /logout              controllers.Login.logout()
 
 # Article
