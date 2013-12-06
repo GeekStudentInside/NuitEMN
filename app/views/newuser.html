@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Inscription</title>
+	
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/normalize.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/foundation.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/perso.css")">
+
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>New Profil</legend>
+
+        <table class="formulaire">
+            <tr><td>
+                <div class="large-24 columns">
+                    <legend>Name</legend>
+                    <br>
+                    <input type="text" name="name" placeholder="Name" value="">
+                </div>
+            </td></tr>
+            <tr><td>
+                <div class="large-24 columns">
+                    <input type="text" name="password" placeholder="Password">
+                </div>
+            </td></tr>
+			<tr><td>
+                <div class="large-24 columns">
+                    <input type="text" name="password2" placeholder="Password">
+                </div>
+            </td></tr>
+           <tr><td>Importer une photo (optionel) : </td>
+		   </tr>
+		   <tr>
+				<td>
+					<a id="file" href="">
+						upload file
+						<input id="upload" type="file">
+					</a> 
+				</td>
+			</tr>
+
+		   <tr><td>
+                <button type="submit">Add</button>
+                <br>
+                <br>
+            </td></tr>
+        </table>
+    </fieldset>
+</form>
+
+    
+
+</body>
+</html>

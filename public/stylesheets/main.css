@@ -3,3 +3,28 @@
 .article_names {
     display: none;
 }
+
+#file {
+    display: block;
+    margin : auto ;
+    height: 30px;
+    line-height: 30px;
+    width: 90px;
+    overflow: hidden;
+    text-align: center;
+    background-color: cornflowerblue;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+}
+#upload {
+    display: block;
+    margin : auto ;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    cursor: pointer;
+    opacity: 0;
+    font-size: 40px;
+}
