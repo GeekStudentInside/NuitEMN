@@ -1,5 +1,7 @@
 package controllers;
 
+import java.io.*;
+import java.nio.channels.FileChannel;
 import java.util.List;
 
 import com.avaje.ebean.Ebean;
@@ -125,6 +127,37 @@ public class Application extends Controller {
 
         }
         return ok(Json.toJson("done"));
+    }
+
+    public static Result uploadForm(){
+        return ok(uploadForm.render()) ;
+    }
+
+    public static Result upload() throws IOException {
+        Http.MultipartFormData body = request().body().asMultipartFormData();
+        Http.MultipartFormData.FilePart picture = body.getFile("picture");
+        if(picture != null){
+            String fileName = picture.getFilename();
+            String contentType = picture.getContentType();
+            File file = picture.getFile();
+            System.out.println(file.getAbsolutePath());
+            String path =    "."+File.separator+"public"+File.separator+"images"+File.separator+fileName;
+            System.out.println(path);
+            File newfile = new File(path);
+            FileChannel inputChannel = new FileInputStream(file).getChannel();
+            FileChannel outputChannel = new FileOutputStream(newfile).getChannel()  ;
+            outputChannel.transferFrom(inputChannel,0,inputChannel.size());
+            inputChannel.close();
+            outputChannel.close();
+
+
+            return ok("File uploaded");
+
+        }
+        else{
+            flash("error", "Missing file");
+            return redirect(routes.Application.index());
+        }
     }
 
 }

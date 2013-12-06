@@ -23,3 +23,6 @@ POST        /createArticle      controllers.Application.createArticle()
 # Route
 GET         /test               controllers.Test.test()
 
+#FileUpload
+GET  /upload                    controllers.Application.uploadForm()
+POST /upload                    controllers.Application.upload()
