@@ -4,14 +4,11 @@
 package models;
 
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import play.db.ebean.Model;
 
 @Entity  
@@ -29,9 +26,24 @@ public class Keyword extends Model{
 	
 	@Column(name="name")
 	public String name;
-	
-	/*@ManyToMany(mappedBy="keywords")
-    public List<Article> articles;*/
+
+
+    @ManyToMany
+    @JsonIgnore
+    @JoinTable(name="article_keyword",
+
+            joinColumns=
+
+            @JoinColumn(name="article_id",
+
+                    referencedColumnName="Id"),
+
+            inverseJoinColumns=
+
+            @JoinColumn(name="keyword_id",
+
+                    referencedColumnName="Id"))
+    public List<Article> articles;
 	
 	public Keyword(){
 		
@@ -41,23 +53,23 @@ public class Keyword extends Model{
 		this.name = key;
 	}
 	
-	/*public void addArticle(Article a){
+	public void addArticle(Article a){
 		this.articles.add(a);
 		this.update();
-	}*/
+	}
 	
-	/*public void removeArticle(Article a){
+	public void removeArticle(Article a){
 		this.articles.remove(a);
 		this.update();
-	}*/
+    }
 	
-	/*public List<Article> getArticles(){
+	public List<Article> getArticles(){
 		return this.articles;
 	}
 	
 	public void setArticles(List<Article> articles){
     	this.articles = articles;
-    }*/
+    }
 
     public static Finder<Long,Keyword> find = new Finder<Long,Keyword>(
             Long.class ,Keyword.class

@@ -1,10 +1,12 @@
 package models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Harold on 05/12/13.
@@ -26,15 +28,9 @@ public class Article extends Model {
     
     @Column(name="url")
     public String url;
-    
-    @ManyToMany
-    @JoinTable(name="article_keyword",
-            joinColumns = {@JoinColumn(
-                    name = "article_id",
-                    referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(
-                    name="keyword_id",
-                    referencedColumnName = "id")})
+
+    @ManyToMany(mappedBy="articles")
+    @JsonIgnore
     public List<Keyword> keywords;
     
     public Article(){
