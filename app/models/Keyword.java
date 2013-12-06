@@ -30,8 +30,8 @@ public class Keyword extends Model{
 	@Column(name="name")
 	public String name;
 	
-	@ManyToMany(mappedBy="article_keyword")
-	public List<Article> articles;
+	/*@ManyToMany(mappedBy="keywords")
+	public List<Article> articles;*/
 	
 	public Keyword(){
 		
@@ -41,22 +41,26 @@ public class Keyword extends Model{
 		this.name = key;
 	}
 	
-	public void addArticle(Article a){
+	/*public void addArticle(Article a){
 		this.articles.add(a);
 		this.update();
-	}
+	}*/
 	
-	public void removeArticle(Article a){
+	/*public void removeArticle(Article a){
 		this.articles.remove(a);
 		this.update();
-	}
+	}*/
 	
-	public List<Article> getArticles(){
+	/*public List<Article> getArticles(){
 		return this.articles;
 	}
 	
 	public void setArticles(List<Article> articles){
     	this.articles = articles;
-    }
+    }*/
+
+    public static Finder<Long,Keyword> find = new Finder<Long,Keyword>(
+            Long.class ,Keyword.class
+    );
 
 }

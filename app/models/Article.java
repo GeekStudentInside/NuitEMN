@@ -27,14 +27,14 @@ public class Article extends Model {
     @Column(name="url")
     public String url;
     
-    @ManyToMany(mappedBy="article_keyword")
+    @ManyToMany
     @JoinTable(name="article_keyword",
-    		joinColumns = {@JoinColumn(
-            name = "article_id", 
-            referencedColumnName = "id")},
+            joinColumns = {@JoinColumn(
+                    name = "article_id",
+                    referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(
-                  name="keyword_id",
-                  referencedColumnName = "id")})
+                    name="keyword_id",
+                    referencedColumnName = "id")})
     public List<Keyword> keywords;
     
     public Article(){
@@ -63,6 +63,9 @@ public class Article extends Model {
         if(n<articles.size()){
             articles.subList(0,n);
         }
+        /*for(Article article : articles){
+            article.keywords = null;
+        }*/
         return articles;
     }
     

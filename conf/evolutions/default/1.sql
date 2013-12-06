@@ -2,6 +2,8 @@
 
 CREATE SEQUENCE rank_id_seq;
 CREATE SEQUENCE rank_id_seq2;
+CREATE SEQUENCE id_article_keyword;
+CREATE SEQUENCE id_keyword;
 
 CREATE TABLE users (
     email VARCHAR (100) PRIMARY KEY ,
@@ -29,11 +31,15 @@ CREATE TABLE Link (
   Weight FLOAT
 );
 
+CREATE TABLE keyword (
+  id INTEGER PRIMARY KEY default nextval('id_keyword'),
+  name varchar(100)
+);
 
-CREATE TABLE users (
-    email VARCHAR (100) PRIMARY KEY ,
-    name VARCHAR (255),
-    password VARCHAR (255)
+CREATE TABLE article_keyword(
+  id INTEGER PRIMARY KEY default nextval('id_article_keyword'),
+  article_id INTEGER references article(id),
+  keyword_id INTEGER references keyword(id)
 );
 
 INSERT into article (name,url) values
@@ -50,14 +56,31 @@ INSERT INTO Link (Article1, Article2, Weight) values
 ((SELECT id FROM Article where name ='tablette' limit 1), (SELECT id FROM Article where name ='table' limit 1), 0.8),
 ((SELECT id FROM Article where name ='table' limit 1), (SELECT id FROM Article where name ='guitare' limit 1), 0.1);
 
+insert into keyword(name) values('delicieux');
+insert into keyword(name) values('sexy');
+
+insert into article_keyword(article_id, keyword_id) values(
+  (SELECT id FROM Article  where name ='tablette' limit 1),
+  (SELECT id FROM Keyword where name = 'delicieux' limit 1)
+);
+
+insert into article_keyword(article_id, keyword_id) values(
+  (SELECT id FROM Article  where name ='table' limit 1),
+  (SELECT id FROM Keyword where name = 'sexy' limit 1)
+);
+
 # --- !Downs
 
-DROP TABLE users;
-DROP TABLE article;
-DROP TABLE comment;
-DROP TABLE Link;
+drop table if exists article_keyword;
+drop table if exists keyword;
+DROP TABLE if exists users;
+DROP TABLE if exists article;
+DROP TABLE if exists comment;
+DROP TABLE if exists Link;
 
-DROP SEQUENCE rank_id_seq;
-DROP SEQUENCE rank_id_seq2;
+drop sequence if exists id_keyword;
+drop sequence if exists id_article_keyword;
+DROP SEQUENCE if exists rank_id_seq;
+DROP SEQUENCE if exists rank_id_seq2;
 
 
