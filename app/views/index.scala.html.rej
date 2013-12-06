@@ -1,0 +1,11 @@
+diff a/app/views/index.scala.html b/app/views/index.scala.html	(rejected hunks)
+@@ -2,6 +2,8 @@
+ 
+ @main("Welcome to Play") {
+ 
+-
++    <div class="history">
++        
++    </div>
+ 
+ }

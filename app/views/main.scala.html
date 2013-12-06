@@ -41,7 +41,7 @@
                         <a href="@routes.Login.newuser">Sign Up</a>
                     </li>
             } else {
-                @if(session.get("isAdmin").equals("true")) {
+                @if(session.get("isAdmin") != null && session.get("isAdmin").equals("true")) {
                     <li class="divider"></li>
                     <li class="has-dropdown not-click">
                         <a href="#">Administration</a>

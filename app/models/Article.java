@@ -3,6 +3,7 @@ import play.db.ebean.Model;
 
 import javax.persistence.*;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -18,12 +19,27 @@ public class Article extends Model {
 	private static final long serialVersionUID = -7383413412594525585L;
 	
 	@Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "rank_id_seq")
     public Long id;
     @Column(name="name")
     public String name;
-
+    
+    @Column(name="url")
     public String url;
+    
+    @ManyToMany
+    @JoinTable(name="article_keyword",
+            joinColumns = {@JoinColumn(
+                    name = "article_id",
+                    referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(
+                    name="keyword_id",
+                    referencedColumnName = "id")})
+    public List<Keyword> keywords;
+    
+    public Article(){
+    	
+    }
 
     public List<Comment> comments;
 
@@ -38,10 +54,18 @@ public class Article extends Model {
     );
 
     public static List<Article> nbArticles(int n){
+        if(n==0){
+            return new LinkedList<Article>();
+        }
+
         List<Article> articles= Article.find.all();
         Collections.shuffle(articles);
-
-        articles.subList(0,n);
+        if(n<articles.size()){
+           articles= articles.subList(0,n);
+        }
+        /*for(Article article : articles){
+            article.keywords = null;
+        }*/
         return articles;
     }
     
@@ -59,6 +83,25 @@ public class Article extends Model {
     	a.modify(name, url);
     }
 
+    
+    public List<Keyword> getKeywords(){
+    	return this.keywords;
+    }
+    
+    public void setKeywords(List<Keyword> keys){
+    	this.keywords = keys;
+    }
+    
+    public void addKeyword(Keyword key){
+    	this.keywords.add(key);
+    }
+    
+    public void removeKeyword(Keyword key){
+    	this.keywords.remove(key);
+    }
+    
+
+
     public void addComment(Comment com) {
         this.comments.add(com);
     }
@@ -74,4 +117,5 @@ public class Article extends Model {
     public static void removeComment(Article a, Comment com){
         a.removeComment(com);
     }
+
 }
