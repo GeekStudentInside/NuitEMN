@@ -30,6 +30,12 @@ CREATE TABLE Link (
 );
 
 
+CREATE TABLE users (
+    email VARCHAR (100) PRIMARY KEY ,
+    name VARCHAR (255),
+    password VARCHAR (255)
+);
+
 INSERT into article (name,url) values
 ('tablette','tablette.jpg'),
 ('ordinateur','ordi.jpg'),
