@@ -7,6 +7,7 @@ import play.data.Form;
 import play.mvc.*;
 import play.mvc.Result;
 import views.html.login;
+import views.html.newuser;
 
 /**
  * Created by guillaume on 05/12/13.
@@ -52,6 +53,7 @@ public class Login extends Controller {
     }
 
     public static Result newuser() {
-        return ok();
+        return ok(newuser.render());
+
     }
 }
