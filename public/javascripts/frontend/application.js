@@ -12,13 +12,12 @@ function getFiveProducts() {
 
             $.each(data, function(i, article){
                 var liArticle = $('<li></li>')
-                var divArticle = $("<div/>", {class:"article"});
+                var divArticle = $("<div/>", {class:"article", id: '' + article.id});
                 var pName = $("<p/>", {class:"article_name"});
                 divArticle.append(pName.append(article.name));
                 divArticle.append($("<img/>", {class:"article_url"}).attr("src", '/assets/images/articles/' + article.url));
                 divArticle.appendTo(liArticle);
                 liArticle.appendTo(listContent);
-                console.log(liArticle[0])
             });
 
             $('.article_name').css('display', 'none');
