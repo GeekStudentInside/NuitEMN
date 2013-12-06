@@ -15,6 +15,7 @@ GET         /logout              controllers.Login.logout()
 
 # Article
 GET         /getProducts        controllers.Application.getArticle()
+GET         /getProductById     controllers.Application.getArticleById(id: Long)
 
 GET         /getLinks           controllers.Application.getAllLinks()
 POST        /setWeight           controllers.Application.setWeight()

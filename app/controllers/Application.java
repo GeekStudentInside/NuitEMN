@@ -50,6 +50,10 @@ public class Application extends Controller {
 
         return ok(Json.toJson(Article.nbArticles(9)));
     }
+    public static Result getArticleById(Long id) {
+
+        return ok(Json.toJson(Article.find.byId(id)));
+    }
 
     public static Result getAllLinks() {
         List<Link> links = Link.find.all();
