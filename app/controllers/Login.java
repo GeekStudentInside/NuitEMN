@@ -37,6 +37,7 @@ public class Login extends Controller {
             session("email", loginForm.get().email);
             User current = Ebean.find(User.class).where().eq("email", loginForm.get().email).findUnique();
             session("name", current.name);
+            session("isAdmin", current.isAdmin.toString());
             return redirect(
                     routes.Application.index()
             );

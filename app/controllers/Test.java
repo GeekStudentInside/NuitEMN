@@ -3,7 +3,6 @@ package controllers;
 import models.Article;
 import play.mvc.Controller;
 import play.mvc.Result;
-import sun.reflect.annotation.ExceptionProxy;
 import views.html.index;
 
 /**
