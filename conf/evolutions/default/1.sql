@@ -1,9 +1,9 @@
 # --- !Ups
 
 CREATE SEQUENCE rank_id_seq;
+CREATE SEQUENCE rank_id_seq2;
 
 CREATE TABLE users (
-
     email VARCHAR (100) PRIMARY KEY ,
     name VARCHAR (255),
     password VARCHAR (255),
@@ -22,6 +22,14 @@ create table Comment (
   author                      varchar(100),
   constraint pk_Comment primary key (id));
 
+CREATE TABLE Link (
+  id INTEGER PRIMARY KEY default nextval('rank_id_seq2'),
+  Article1 INTEGER,
+  Article2 INTEGER,
+  Weight FLOAT
+);
+
+
 INSERT into article (name,url) values
 ('tablette','tablette.jpg'),
 ('ordinateur','ordi.jpg'),
@@ -30,15 +38,6 @@ INSERT into article (name,url) values
 ('retroprojecteur','retropro.jpg');
 
 INSERT INTO  users (email, name, password, isAdmin) values ('blondeau.gui@gmail.com', 'Guillaume Blondeau', 'test', true);
-
-CREATE SEQUENCE rank_id_seq2;
-
-CREATE TABLE Link (
-    id INTEGER PRIMARY KEY default nextval('rank_id_seq2'),
-    Article1 INTEGER,
-    Article2 INTEGER,
-    Weight FLOAT
-);
 
 INSERT INTO Link (Article1, Article2, Weight) values
 ((SELECT id FROM Article  where name ='tablette' limit 1), (SELECT id FROM Article where name ='ordinateur' limit 1), 0.5),
@@ -50,8 +49,9 @@ INSERT INTO Link (Article1, Article2, Weight) values
 DROP TABLE users;
 DROP TABLE article;
 DROP TABLE comment;
-DROP SEQUENCE rank_id_seq;
 DROP TABLE Link;
+
+DROP SEQUENCE rank_id_seq;
 DROP SEQUENCE rank_id_seq2;
 
 
