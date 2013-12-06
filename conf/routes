@@ -14,5 +14,6 @@ POST        /login               controllers.Login.authenticate()
 GET         /logout              controllers.Login.logout()
 
 # Article
-GET         /getProducts        controllers.Application.getArticle()
-GET         /getLinks           controllers.Application.getAllLinks()
+GET         /getProducts         controllers.Application.getArticle()
+GET         /getLinks            controllers.Application.getAllLinks()
+POST        /setWeight           controllers.Application.setWeight()
