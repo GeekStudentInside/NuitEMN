@@ -36,7 +36,6 @@ INSERT INTO  users (email, name, password, isAdmin) values ('blondeau.gui@gmail.
 CREATE SEQUENCE rank_id_seq2;
 
 CREATE TABLE Link (
-
     id INTEGER PRIMARY KEY default nextval('rank_id_seq2'),
     Article1 INTEGER,
     Article2 INTEGER,
@@ -44,9 +43,9 @@ CREATE TABLE Link (
 );
 
 INSERT INTO Link (Article1, Article2, Weight) values
-((SELECT id FROM Article where name ='tablette'), (SELECT id FROM Article where name ='ordinateur'), 0.5),
-((SELECT id FROM Article where name ='tablette'), (SELECT id FROM Article where name ='table'), 0.8),
-((SELECT id FROM Article where name ='table'), (SELECT id FROM Article where name ='guitare'), 0.1);
+((SELECT id FROM Article  where name ='tablette' limit 1), (SELECT id FROM Article where name ='ordinateur' limit 1), 0.5),
+((SELECT id FROM Article where name ='tablette' limit 1), (SELECT id FROM Article where name ='table' limit 1), 0.8),
+((SELECT id FROM Article where name ='table' limit 1), (SELECT id FROM Article where name ='guitare' limit 1), 0.1);
 
 # --- !Downs
 
@@ -55,4 +54,5 @@ DROP TABLE article;
 DROP TABLE comment;
 DROP SEQUENCE rank_id_seq;
 DROP TABLE Link;
+DROP SEQUENCE rank_id_seq2;
 
