@@ -56,10 +56,11 @@ function addToHistory()
 
 $(function(){
     getFiveProducts();
-    $(window).on("load", function() {
+    //$(window).on("load", function() {
+    setTimeout(function(){
         var articles = $('.article');
         articles.each(function(index, valeur){
             $(this).on('mouseover', visibleDetails).on('mouseout', visibleDetails).on('click', selectArticle);
         });
-    });
+    }, 1000);
 });
