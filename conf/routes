@@ -18,7 +18,7 @@ GET         /getProducts        controllers.Application.getArticle()
 
 GET         /getLinks           controllers.Application.getAllLinks()
 POST        /setWeight           controllers.Application.setWeight()
-
+POST        /createArticle      controllers.Application.createArticle()
 # Route
 GET         /test               controllers.Test.test()
 

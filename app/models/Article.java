@@ -19,7 +19,7 @@ public class Article extends Model {
 	private static final long serialVersionUID = -7383413412594525585L;
 	
 	@Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "rank_id_seq")
     public Long id;
     @Column(name="name")
     public String name;

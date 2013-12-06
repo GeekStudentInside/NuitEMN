@@ -28,7 +28,23 @@ public class Application extends Controller {
 
 
 
+    public static Result createArticle(){
+        JsonNode jsonlist = request().body().asJson();
 
+        for (int i = 0; i < jsonlist.size(); i++) {
+            JsonNode json = jsonlist.get(i);
+        String name = json.findPath("name").textValue();
+        String url = json.findPath("url").textValue();
+        Article newArticle = new Article(name,url) ;
+            Ebean.beginTransaction();
+            Ebean.save(newArticle);
+            Ebean.commitTransaction();
+            Ebean.endTransaction();
+
+        }
+
+        return ok("whatever");
+    }
 
     public static Result getArticle() {
 
@@ -79,7 +95,7 @@ public class Application extends Controller {
                     .findList();
             List<Link> linksReverse = Link.find.where()
                     .eq("article1", Article.find.byId(Long.parseLong(a2)))
-                    .eq("article2", Article.find.byId(Long.parseLong(a1)) )
+                    .eq("article2", Article.find.byId(Long.parseLong(a1)))
                     .findList();
             // TODO doit pouvoir se faire avec un join dans 1 seule requete
             links.addAll(linksReverse);
